@@ -8,6 +8,7 @@ import com.surgi.pages.LoginPage;
 import com.surgi.utility.TestContext;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,6 +23,7 @@ public class LoginSteps {
     public void openLoginPage(String url) throws InterruptedException {
 
         TimeUnit.SECONDS.sleep(60); // Wait for 60 seconds before opening the login page
+        fail("prova jenkins pipeline failed ");
 
         //loginPage.open(url);
         //loginPage.get();
