@@ -17,7 +17,13 @@ pipeline{
         always {
             cucumber buildStatus: 'UNSTABLE', fileIncludePattern: 'cucumber.json', jsonReportDirectory: 'target/cucumber-reports'
             junit testResults: 'target/surefire-reports/*.xml', allowEmptyResults: true
-            archiveArtifacts artifacts: 'target/surefire-reports/**, target/cucumber-reports/**', allowEmptyArchive: true
+            sh '''
+                mkdir -p target/artifacts
+                zip -r target/artifacts/test-reports.zip \
+                target/surefire-reports \
+                target/cucumber-reports
+            '''
+            archiveArtifacts artifacts: 'target/surefire-reports/**, target/cucumber-reports/**, target/artifacts/*.zip', allowEmptyArchive: true
         }
     }
 }
