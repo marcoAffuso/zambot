@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage<LoginPage> {
 
-    private final By usernameInput = By.id("username");
+    private final By usernameInput = By.cssSelector("#username, #email, input[name='username'], input[name='email'], input[type='email']");
     private final By passwordInput = By.id("password");
     private final By loginButton = By.cssSelector("button[type='submit']");
     private final By errorBox = By.cssSelector(".error, .alert-danger, [role='alert']");
