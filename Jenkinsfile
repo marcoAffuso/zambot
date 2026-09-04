@@ -21,7 +21,8 @@ pipeline{
                 mkdir -p target/artifacts
                 zip -r target/artifacts/test-reports.zip \
                 target/surefire-reports \
-                target/cucumber-reports
+                target/cucumber-reports \
+                target/failure-artifacts
             '''
             archiveArtifacts artifacts: 'target/surefire-reports/**, target/cucumber-reports/**, target/artifacts/*.zip', allowEmptyArchive: true
         }
