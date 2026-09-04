@@ -47,6 +47,13 @@ public class Hooks implements HooksInterface {
                 artifactDirectory
             );
 
+            // Nome originale dello scenario
+            Files.writeString(
+                artifactDirectory.resolve("scenario_name.txt"),
+                scenario.getName(),
+                StandardCharsets.UTF_8
+            );
+
             // DOM corrente
             Files.writeString(
                 artifactDirectory.resolve("page.html"),

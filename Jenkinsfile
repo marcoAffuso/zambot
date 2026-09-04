@@ -24,7 +24,8 @@ pipeline{
                 target/cucumber-reports \
                 target/failure-artifacts
             '''
-            archiveArtifacts artifacts: 'target/surefire-reports/**, target/cucumber-reports/**, target/artifacts/*.zip', allowEmptyArchive: true
+
+            archiveArtifacts artifacts: 'target/surefire-reports/**, target/cucumber-reports/**, target/failure-artifacts/**, target/artifacts/*.zip', allowEmptyArchive: true
         }
     }
 }
