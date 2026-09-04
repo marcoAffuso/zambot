@@ -2,6 +2,7 @@ package com.surgi.pages;
 
 import java.time.Duration;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -21,10 +22,16 @@ public abstract class BasePage<T extends BasePage<T>> extends LoadableComponent<
 
     public void open(String url) {
         driver.get(url);
+        waitForPageReady();
     }
 
     protected WebElement waitForElement(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    protected void waitForPageReady() {
+        wait.until(driver -> "complete".equals(
+            ((JavascriptExecutor) driver).executeScript("return document.readyState")));
     }
 
     public void clickElement(By locator) {

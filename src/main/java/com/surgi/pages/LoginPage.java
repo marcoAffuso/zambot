@@ -24,6 +24,12 @@ public class LoginPage extends BasePage<LoginPage> {
         wait.until(ExpectedConditions.visibilityOfElementLocated(usernameInput));
     }
 
+    @Override
+    public void open(String url) {
+        super.open(url);
+        waitForElement(usernameInput);
+    }
+
     public void enterUsername(String username) {
         typeText(usernameInput, username);
     }
